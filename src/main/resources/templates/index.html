@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TDS CALCULATOR</title>
+</head>
+<body>
+<h2>Upload a File</h2>
+<form method="post" action="#" enctype="multipart/form-data" th:action="@{/upload}" th:object="${fileUploadForm}">
+    <input type="file" name="file" id="file" th:field="*{file}" />
+    <button type="submit">Upload</button>
+</form>
+
+
+
+<h2>User Details</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>User Name</th>
+        <th>Withdraw Amount</th>
+        <th>TDS</th>
+        <th>Actual TDS</th>
+        <th>TDS Difference</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate through the userDetailsList -->
+    <tr th:each="userDetail : ${userDetailsList}">
+        <td th:text="${userDetail.userId}">User ID</td>
+        <td th:text="${userDetail.userName}">User Name</td>
+        <td th:text="${userDetail.withdrawAmount}">Withdraw Amount</td>
+        <td th:text="${userDetail.TDS}">TDS</td>
+        <td th:text="${userDetail.actualTDS}">Actual TDS</td>
+        <td th:text="${userDetail.TDSDifference}">TDS Difference</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
